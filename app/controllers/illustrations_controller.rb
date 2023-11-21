@@ -1,13 +1,16 @@
 class IllustrationsController < ApplicationController
+  def index
+    @illustrations = current_user.illustrations.where.not(image_url: nil).order(created_at: :desc)
+  end
+
   def create
-    @character = Character.find(params[:character_id])
     @illustration = Illustration.new(illustration_params)
-    @illustration.character = @character
+    @illustration.user = current_user
 
     if @illustration.save!
-      redirect_to character_path(@illustration.character)
+      redirect_to illustrations_path
     else
-      render "characters/show"
+      render :index
     end
   end
 
@@ -18,6 +21,6 @@ class IllustrationsController < ApplicationController
   private
 
   def illustration_params
-    params.require(:illustration).permit(:situation)
+    params.require(:illustration).permit(:character_photo_url, :situation)
   end
 end

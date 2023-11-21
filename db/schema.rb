@@ -42,20 +42,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_122519) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "characters", force: :cascade do |t|
-    t.bigint "user_id"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_characters_on_user_id"
-  end
-
   create_table "illustrations", force: :cascade do |t|
-    t.bigint "character_id", null: false
-    t.text "situation"
+    t.bigint "user_id"
+    t.string "image_url"
+    t.string "character_photo_url"
+    t.string "situation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["character_id"], name: "index_illustrations_on_character_id"
+    t.index ["user_id"], name: "index_illustrations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,6 +66,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_122519) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "characters", "users"
-  add_foreign_key "illustrations", "characters"
+  add_foreign_key "illustrations", "users"
 end

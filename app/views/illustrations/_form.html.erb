@@ -1,10 +1,13 @@
-<%= simple_form_for([character, illustration]) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class="form-inputs">
-    <%= f.input :situation, as: :text %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+<div class="p-3 my-5 bg-white rounded shadow">
+  <%= simple_form_for(illustration) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <%= f.input :character_photo_url, label: 'URL of a photo of the person to draw' %>
+      <%= f.input :situation, label: 'What are they doing?' %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

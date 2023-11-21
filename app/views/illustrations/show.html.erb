@@ -1,7 +1,3 @@
 <div>
-  <% if @illustration.image.attached? %>
-    <%= cl_image_tag @illustration.image.key %>
-  <% else %>
-    <p>Processing</p>
-  <% end %>
+  <%= image_tag @illustration.image_url %>
 </div>

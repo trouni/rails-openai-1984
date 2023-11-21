@@ -1,5 +1,5 @@
-class Illustration < ApplicationRecord
-  belongs_to :character
+require 'open-uri'
 
-  has_one_attached :image
+class Illustration < ApplicationRecord
+  belongs_to :user
 end
