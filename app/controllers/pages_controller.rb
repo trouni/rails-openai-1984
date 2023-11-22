@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @images = Illustration.with_attached_images.order(created_at: :desc).limit(18).map(&:images).flatten
-    @illustration = Illustration.new
+    @illustrations = Character.with_attached_illustrations.order(created_at: :desc).limit(18).map(&:illustrations).flatten
+    @character = Character.new
   end
 end

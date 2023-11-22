@@ -5,15 +5,15 @@ class DescribePhoto
   Only return the description, do not add any introduction or explanations to your answer.
   INSTRUCTIONS
 
-  def initialize(image_url)
-    @image_url = image_url
+  def initialize(photo_url)
+    @photo_url = photo_url
   end
 
   def call
     client = OpenAI::Client.new
     messages = [
       { type: "text", text: INSTRUCTIONS },
-      { type: "image_url", image_url: { url: @image_url } }
+      { type: "photo_url", image_url: { url: @photo_url } }
     ]
     puts '-' * 50
     puts "Sending request to OpenAI API to describe the character photo..."

@@ -1,25 +1,22 @@
 class IllustrationsController < ApplicationController
-  def index
-    @illustrations = Illustration.order(created_at: :desc)
-  end
-
   def create
-    @illustration = Illustration.new(illustration_params)
-
-    if @illustration.save!
-      redirect_to root_path
-    else
-      render 'pages/home'
-    end
+    @character = Character.find(params[:character_id])
+    detailed_situation = GenerateSituation.new(@character.description, params[:situation]).call
+    illustration_url = GenerateIllustration.new(detailed_situation).call
+    @character.attach_illustration_from_url(illustration_url)
+    redirect_to character_path(@character)
   end
-
-  def show
-    @illustration = Illustration.find(params[:id])
+  
+  def destroy
+    @illustration = ActiveStorage::Attachment.find(params[:id])
+    @character = @illustration.record
+    @illustration.purge
+    redirect_to character_path(@character)
   end
 
   private
 
-  def illustration_params
-    params.require(:illustration).permit(:character_photo, :situation)
+  def character_params
+    params.require(:character).permit(:photo)
   end
 end
