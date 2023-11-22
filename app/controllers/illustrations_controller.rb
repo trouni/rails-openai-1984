@@ -21,6 +21,6 @@ class IllustrationsController < ApplicationController
   private
 
   def illustration_params
-    params.require(:illustration).permit(:character_photo_url, :situation)
+    params.require(:illustration).permit(:character_photo, :situation)
   end
 end
