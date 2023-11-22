@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="character-form-container position-absolute z-3">
+  <%= render 'illustrations/form', illustration: @illustration %>
+</div>
+<div class="home-grid">
+  <% @images.each do |image| %>
+    <%= cl_image_tag image.key, width: 512, class: 'w-100' %>
+  <% end %>
+</div>
