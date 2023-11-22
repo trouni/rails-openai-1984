@@ -1,0 +1,9 @@
+.grid-item {
+  i {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  &:hover i {
+    opacity: 1;
+  }
+}

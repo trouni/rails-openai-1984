@@ -1,5 +1,6 @@
+<%= render "logo" %>
 <div class="container">
-  <div class="illustration-form-container">
+  <div class="illustration-form-container position-fixed z-3">
     <%= cl_image_tag @character.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: 'avatar' %>
     <%= form_tag(nil, method: :post) do %>
       <div class="form-inputs">
@@ -10,17 +11,18 @@
       </div>
     <% end %>
   </div>
-  <div class=" vw-100 vh-100 position-fixed top-0 start-0 z-n1">
+  <div class="vw-100 vh-100 position-fixed top-0 start-0 z-n1">
     <% if @illustrations.present? %>
       <div class="character-grid">
         <% @illustrations.each do |illustration| %>
           <div class="position-relative grid-item">
-            <%= link_to cloudinary_url(illustration.key), target: :blank do %>
-              <%= cl_image_tag illustration.key, class: "w-100 shadow-1-strong rounded" %>
+            <%= cl_image_tag illustration.key, class: "w-100 shadow-1-strong rounded" %>
+            <%= link_to cloudinary_url(illustration.key), class: 'position-absolute top-0 end-0 m-2', target: :blank do %>
+              <i class="fa-solid fa-download"></i>
             <% end %>
             <%= link_to illustration_path(illustration.id), method: :delete,
                         data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
-                        class: 'position-absolute top-0 end-0 m-2' do %>
+                        class: 'position-absolute bottom-0 end-0 m-2' do %>
               <i class="fa-solid fa-skull-crossbones"></i>
             <% end %>
           </div>

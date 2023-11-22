@@ -1,18 +1,21 @@
-<div class="character-form-container position-absolute z-3">
+<div class="character-form-container position-fixed z-3">
   <div class="text-center text-primary mb-2">
     <h1><i class="fa-solid fa-bolt-lightning"></i> HeroifyMe!</h1>
   </div>
   <%= render 'characters/form', character: @character %>
 </div>
-<div class="home-grid">
-  <% @illustrations.shuffle.each do |illustration| %>
-    <div class="position-relative grid-item">
-      <%= link_to character_path(illustration.record), class: 'position-absolute top-0 end-0 m-2' do %>
-        <i class="fa-solid fa-bolt"></i>
-      <% end %>
-      <%= link_to cloudinary_url(illustration.key), target: :blank do %>
+<div class="vw-100 vh-100 position-fixed top-0 start-0 z-n1">
+  <div class="home-grid">
+    <% @illustrations.shuffle.each do |illustration| %>
+      <div class="position-relative grid-item">
         <%= cl_image_tag illustration.key, width: 512, class: 'w-100' %>
-      <% end %>
-    </div>
-  <% end %>
+        <%= link_to character_path(illustration.record), class: 'position-absolute top-0 start-0 m-2' do %>
+          <i class="fa-solid fa-bolt z-3"></i>
+        <% end %>
+        <%= link_to cloudinary_url(illustration.key), class: 'position-absolute top-0 end-0 m-2', target: :blank do %>
+          <i class="fa-solid fa-download z-3"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
