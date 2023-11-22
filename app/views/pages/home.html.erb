@@ -9,7 +9,7 @@
     <% @illustrations.shuffle.each do |illustration| %>
       <div class="position-relative grid-item">
         <%= cl_image_tag illustration.key, width: 512, class: 'w-100' %>
-        <%= link_to character_path(illustration.record), class: 'position-absolute top-0 start-0 m-2' do %>
+        <%= link_to character_path(illustration.record, featured: illustration.id), class: 'position-absolute top-0 start-0 m-2' do %>
           <i class="fa-solid fa-bolt z-3"></i>
         <% end %>
         <%= link_to cloudinary_url(illustration.key), class: 'position-absolute top-0 end-0 m-2', target: :blank do %>

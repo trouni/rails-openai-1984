@@ -14,9 +14,11 @@
   <div class="vw-100 vh-100 position-fixed top-0 start-0 z-n1">
     <% if @illustrations.present? %>
       <div class="character-grid">
-        <% @illustrations.each do |illustration| %>
-          <div class="position-relative grid-item">
-            <%= cl_image_tag illustration.key, class: "w-100 shadow-1-strong rounded" %>
+        <% @illustrations.each_with_index do |illustration, idx| %>
+          <div class="position-relative grid-item <%= 'featured' if featured?(illustration.id, idx) %>">
+            <%= link_to character_path(illustration.record, featured: illustration.id) do %>
+              <%= cl_image_tag illustration.key, class: "w-100 shadow-1-strong rounded" %>
+            <% end %>
             <%= link_to cloudinary_url(illustration.key), class: 'position-absolute top-0 end-0 m-2', target: :blank do %>
               <i class="fa-solid fa-download"></i>
             <% end %>
