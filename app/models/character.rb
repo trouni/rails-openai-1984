@@ -9,8 +9,7 @@ class Character < ApplicationRecord
   validates :photo, presence: true
 
   def generate_description
-    character_description = DescribePhoto.new(photo.url).call
-    update(description: character_description)
+    UpdateCharacterDescriptionJob.perform_later(id)
   end
 
   def attach_illustration_from_url(url)

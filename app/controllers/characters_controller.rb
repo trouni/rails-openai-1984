@@ -3,7 +3,7 @@ class CharactersController < ApplicationController
     @character = Character.new(character_params)
 
     if @character.save!
-      redirect_to character_path(@character)
+      redirect_to character_path(@character), notice: 'Your character has been created!'
     else
       render 'pages/home'
     end

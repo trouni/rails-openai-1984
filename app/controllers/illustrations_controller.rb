@@ -1,17 +1,16 @@
 class IllustrationsController < ApplicationController
   def create
     @character = Character.find(params[:character_id])
-    detailed_situation = GenerateSituation.new(@character.description, params[:situation]).call
-    illustration_url = GenerateIllustration.new(detailed_situation).call
-    @character.attach_illustration_from_url(illustration_url)
-    redirect_to character_path(@character)
+    GenerateIllustrationJob.perform_later(@character.id, params[:situation])
+
+    redirect_to character_path(@character), notice: 'Your illustration is being generated...'
   end
   
   def destroy
     @illustration = ActiveStorage::Attachment.find(params[:id])
     @character = @illustration.record
     @illustration.purge
-    redirect_to character_path(@character)
+    redirect_to character_path(@character), notice: 'The illustration has been deleted!'
   end
 
   private
