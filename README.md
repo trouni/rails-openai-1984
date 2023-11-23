@@ -140,6 +140,7 @@ def call
   INSTRUCTIONS
 ```
 
+
 Let's generate the description after the character is created
 
 ```rb
