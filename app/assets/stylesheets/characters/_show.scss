@@ -17,8 +17,8 @@
   padding-left: 6rem;
   border-radius: 6rem 4px 4px 6rem;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 20%;
+  transform: translateX(-50%);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px);
@@ -26,6 +26,11 @@
   min-width: 400px;
   max-width: 600px;
   width: 95vw;
+
+  &.with-illustrations {
+    top: unset;
+    bottom: 5%;
+  }
 
   .avatar {
     position: absolute;
