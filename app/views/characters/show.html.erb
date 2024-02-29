@@ -1,7 +1,9 @@
 <%= render "logo" %>
 <div class="container">
-  <div class="illustration-form-container position-fixed z-3<%= ' with-illustrations' if @illustrations.present? %>">
-    <%= cl_image_tag @character.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: 'avatar' %>
+  <div class="illustration-form-container position-fixed z-3<%= ' with-illustrations' if @illustrations.present? %><%= ' with-photo' if @character.respond_to?(:photo) && @character.photo.attached? %>">
+    <% if @character.respond_to?(:photo) %>
+      <%= cl_image_tag @character.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: 'avatar' %>
+    <% end %>
     <%= form_tag(character_illustrations_path(@character), method: :post) do %>
       <div class="form-inputs">
         <%= text_field :situation, nil, placeholder: 'What should your hero be doing?', class: 'w-100 p-1' %>

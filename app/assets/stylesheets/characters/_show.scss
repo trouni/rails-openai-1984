@@ -14,8 +14,6 @@
 .illustration-form-container {
   margin: 2em auto;
   padding: 0.8rem;
-  padding-left: 6rem;
-  border-radius: 6rem 4px 4px 6rem;
   left: 50%;
   top: 20%;
   transform: translateX(-50%);
@@ -26,6 +24,11 @@
   min-width: 400px;
   max-width: 600px;
   width: 95vw;
+
+  &.with-photo {
+    padding-left: 6rem;
+    border-radius: 6rem 4px 4px 6rem;
+  }
 
   &.with-illustrations {
     top: unset;
