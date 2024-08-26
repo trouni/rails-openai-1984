@@ -77,7 +77,7 @@ Let's create a GenerateSituation service object to improve the prompt
     puts '-' * 50
     response = client.chat(
       parameters: {
-        model: "gpt-4-1106-preview",
+        model: "gpt-40-mini",
         messages: [
           { role: "user", content: "Here is a character description: #{@character_description}"},
           { role: "user", content: INSTRUCTIONS },
@@ -114,14 +114,16 @@ Let's create a DescribePhoto service object
 def call
     client = OpenAI::Client.new
     messages = [
-      { type: "text", text: INSTRUCTIONS },
-      { type: "photo_url", image_url: { url: @photo_url } }
+      { role: "user", content: [
+        { type: "text", text: INSTRUCTIONS },
+        { type: "photo_url", image_url: { url: @photo_url } }
+      ] }
     ]
     puts '-' * 50
     puts "Sending request to OpenAI API to describe the character photo..."
     puts '-' * 50
     response = client.chat(parameters: {
-      model: "gpt-4-vision-preview",
+      model: "gpt-4o-mini",
       messages: [{ role: "user", content: messages }],
       max_tokens: 2000,
     })
