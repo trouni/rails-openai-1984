@@ -77,7 +77,7 @@ Let's create a GenerateSituation service object to improve the prompt
     puts '-' * 50
     response = client.chat(
       parameters: {
-        model: "gpt-40-mini",
+        model: "gpt-4o-mini",
         messages: [
           { role: "user", content: "Here is a character description: #{@character_description}"},
           { role: "user", content: INSTRUCTIONS },
