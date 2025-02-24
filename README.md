@@ -1,6 +1,6 @@
 # AI in Rails & Service Objects
 
-Note: The illustrations can synced with the Heroku database. The correct Cloudinary key will be needed.
+Note: The illustrations can be synced with the Heroku database. Access to the Heroku app and the correct Cloudinary key will be needed.
 ```bash
 heroku pg:pull DATABASE_URL --app heroifyme
 heroku pg:reset --app heroifyme && heroku pg:push heroifyme DATABASE_URL --app heroifyme
