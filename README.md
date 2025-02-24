@@ -1,6 +1,10 @@
 # AI in Rails & Service Objects
 
-Note: 
+Note: The illustrations can synced with the Heroku database.
+```bash
+heroku pg:pull DATABASE_URL --app heroifyme
+heroku pg:reset --app heroifyme && heroku pg:push heroifyme DATABASE_URL --app heroifyme
+```
 
 
 
