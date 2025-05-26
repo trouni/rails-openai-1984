@@ -112,7 +112,7 @@ Let's add a route to trigger it
     @character = Character.find(params[:character_id])
 
     # 2. Generate the prompt for the illustration
-    detailed_situation = GenerateSituation.new(@character.description, @character.situation).call
+    detailed_situation = GenerateSituation.new(@character.description, params[:situation]).call
 
     # 3. Generate the illustration
     illustration_url = GenerateIllustration.new(detailed_situation).call
