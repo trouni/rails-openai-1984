@@ -1,6 +1,6 @@
 <%= simple_form_for(character) do |f| %>
   <div class="form-inputs">
-    <%= f.input :description, label: false, placeholder: 'Describe the appearance of your hero' %>
+    <%= f.input :photo, as: :file, input_html: { accept: "image/*", capture: "camera" }, label: false %>
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Create your Hero", class: 'btn btn-primary w-100' %>

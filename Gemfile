@@ -56,6 +56,7 @@ gem "sassc-rails"
 gem "sidekiq", "< 7"
 gem "sidekiq-failures", "~> 1.0"
 gem "simple_form", github: "heartcombo/simple_form"
+gem "ruby-openai"
 
 
 group :development, :test do
